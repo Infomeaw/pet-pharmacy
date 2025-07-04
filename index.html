@@ -1,0 +1,2876 @@
+
+ 
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- block robot google search -->
+    <meta name="robots" content="noindex, nofollow">
+    <title>PetFood Plus - อาหารสัตว์เลี้ยงคุณภาพสูง</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-color: #FF6B35;
+            --secondary-color: #F7931E;
+            --accent-color: #4A90E2;
+            --dark-color: #2C3E50;
+            --light-bg: #F8F9FA;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Prompt', 'Sarabun', sans-serif;
+            color: var(--dark-color);
+            overflow-x: hidden;
+        }
+
+        /* Header Section */
+        .header-section {
+            position: relative;
+            min-height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.05"><path d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/></g></g></svg>');
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            padding: 100px 0 150px;
+        }
+
+        .header-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 10px 25px;
+            border-radius: 30px;
+            margin-bottom: 30px;
+            color: white;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .header-badge i {
+            font-size: 1.2rem;
+        }
+
+        .header-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .header-title span {
+            background: linear-gradient(to right, #ffd89b, #ff6b35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-description {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .header-stats {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ffd89b;
+            margin-bottom: 5px;
+        }
+
+        .stat-item p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn-header-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 15px 35px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+        }
+
+        .btn-header-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.4);
+        }
+
+        .btn-header-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-header-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .header-images {
+            position: relative;
+            height: 500px;
+        }
+
+        .image-card {
+            position: absolute;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .image-card:hover {
+            transform: scale(1.05);
+            z-index: 10;
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-card.card-1 {
+            top: 20px;
+            left: 0;
+            width: 280px;
+            height: 200px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .image-card.card-2 {
+            top: 100px;
+            right: 50px;
+            width: 300px;
+            height: 220px;
+            animation: float 6s ease-in-out infinite 2s;
+        }
+
+        .image-card.card-3 {
+            bottom: 50px;
+            left: 100px;
+            width: 260px;
+            height: 180px;
+            animation: float 6s ease-in-out infinite 4s;
+        }
+
+        .image-label {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px 20px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--dark-color);
+        }
+
+        .image-label i {
+            color: var(--primary-color);
+        }
+
+        .floating-badge {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #fff, #f0f0f0);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: translateY(-50%) rotate(0deg); }
+            to { transform: translateY(-50%) rotate(360deg); }
+        }
+
+        .floating-badge i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .floating-badge p {
+            margin: 0;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-align: center;
+            color: var(--dark-color);
+            line-height: 1.2;
+        }
+
+        .header-wave {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+
+        .header-wave svg {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: 120px;
+        }
+
+        @media (max-width: 991px) {
+            .header-section {
+                min-height: auto;
+            }
+
+            .header-content {
+                padding: 80px 0 100px;
+            }
+
+            .header-title {
+                font-size: 2.5rem;
+            }
+
+            .header-images {
+                margin-top: 50px;
+                height: 400px;
+            }
+
+            .image-card {
+                position: relative;
+                width: 100% !important;
+                height: 250px !important;
+                margin-bottom: 20px;
+                top: auto !important;
+                left: auto !important;
+                right: auto !important;
+                bottom: auto !important;
+            }
+
+            .floating-badge {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-title {
+                font-size: 2rem;
+            }
+
+            .header-description {
+                font-size: 1.1rem;
+            }
+
+            .header-stats {
+                gap: 25px;
+            }
+
+            .stat-item h3 {
+                font-size: 2rem;
+            }
+
+            .header-actions {
+                flex-direction: column;
+            }
+
+            .btn-header-primary,
+            .btn-header-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            padding: 15px 0;
+        }
+
+        .navbar.scrolled {
+            padding: 10px 0;
+            background: rgba(255, 255, 255, 0.98);
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .brand-logo {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(255,107,53,0.3);
+        }
+
+        .brand-logo i {
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-name {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--dark-color);
+            line-height: 1;
+        }
+
+        .brand-tagline {
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-top: 2px;
+        }
+
+        .custom-toggler {
+            border: none;
+            padding: 4px 8px;
+            background: transparent;
+        }
+
+        .toggler-icon {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: var(--dark-color);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .custom-toggler:focus {
+            box-shadow: none;
+        }
+
+        .nav-link {
+            color: var(--dark-color) !important;
+            font-weight: 500;
+            margin: 0 10px;
+            padding: 10px 15px !important;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .nav-link i {
+            font-size: 1.1rem;
+            opacity: 0.7;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+            background: rgba(255,107,53,0.1);
+        }
+
+        .nav-link:hover i {
+            opacity: 1;
+        }
+
+        .navbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-icon-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-icon-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .nav-cart-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            position: relative;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .nav-cart-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255,107,53,0.4);
+            color: white;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--accent-color);
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 2px 10px rgba(74,144,226,0.4);
+        }
+
+        @media (max-width: 991px) {
+            .navbar-collapse {
+                background: white;
+                margin-top: 20px;
+                padding: 20px;
+                border-radius: 15px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            }
+
+            .navbar-actions {
+                margin-top: 20px;
+                padding-top: 20px;
+                border-top: 1px solid #eee;
+                justify-content: center;
+            }
+
+            .nav-link {
+                margin: 5px 0;
+            }
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, rgba(255,107,53,0.1), rgba(74,144,226,0.1));
+            padding: 100px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #6c757d;
+            margin-bottom: 30px;
+        }
+
+        .hero-image {
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        /* Trust Badges */
+        .trust-badges {
+            background: white;
+            padding: 40px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .trust-badge {
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .trust-badge:hover {
+            transform: translateY(-5px);
+        }
+
+        .trust-badge i {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        .trust-badge h5 {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        /* Product Cards */
+        .product-section {
+            padding: 80px 0;
+            background: var(--light-bg);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: #6c757d;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .product-card .product-image {
+            position: relative;
+            overflow: hidden;
+            height: 250px;
+            background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+        }
+
+        .product-card .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .product-card .product-details {
+            padding: 25px;
+        }
+
+        .product-card h4 {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+
+        .product-card .price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .product-card .rating {
+            color: #ffc107;
+            margin-bottom: 15px;
+        }
+
+        /* Pet Medicine Section */
+        .medicine-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .medicine-hero-banner {
+            background: linear-gradient(135deg, rgba(74,144,226,0.05), rgba(255,107,53,0.05));
+            border-radius: 30px;
+            padding: 60px;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .medicine-hero-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(74,144,226,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .medicine-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .medicine-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .medicine-content h3 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-bottom: 20px;
+        }
+
+        .medicine-content p {
+            font-size: 1.1rem;
+            color: #6c757d;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .medicine-features {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .med-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .med-feature i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .med-feature span {
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        .medicine-image {
+            position: relative;
+        }
+
+        .medicine-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .floating-card {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            background: white;
+            padding: 20px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .floating-card i {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .floating-card p {
+            margin: 0;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        .medicine-categories {
+            margin-bottom: 80px;
+        }
+
+        .category-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            height: 100%;
+            border: 2px solid transparent;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .category-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(255,107,53,0.1), rgba(74,144,226,0.1));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            transition: all 0.3s ease;
+        }
+
+        .category-card:hover .category-icon {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .category-icon i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .category-card:hover .category-icon i {
+            color: white;
+        }
+
+        .category-card h4 {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+
+        .category-card p {
+            color: #6c757d;
+            margin-bottom: 20px;
+        }
+
+        .category-link {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: gap 0.3s ease;
+        }
+
+        .category-link:hover {
+            gap: 10px;
+            color: var(--secondary-color);
+        }
+
+        .featured-medicines {
+            margin-bottom: 60px;
+        }
+
+        .featured-medicines h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+
+        .medicine-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .medicine-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .medicine-img {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .medicine-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .med-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .med-badge.new {
+            background: var(--accent-color);
+        }
+
+        .med-badge.discount {
+            background: #28a745;
+        }
+
+        .medicine-info {
+            padding: 25px;
+        }
+
+        .medicine-info h5 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+
+        .med-desc {
+            color: #6c757d;
+            margin-bottom: 20px;
+        }
+
+        .med-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .med-meta span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .med-meta i {
+            color: var(--accent-color);
+        }
+
+        .price-action {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .med-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        .medicine-warning {
+            background: #fff3cd;
+            border: 2px solid #ffeaa7;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 60px 0;
+        }
+
+        .warning-content {
+            display: flex;
+            align-items: start;
+            gap: 20px;
+        }
+
+        .warning-content i {
+            font-size: 2rem;
+            color: #f39c12;
+        }
+
+        .warning-content h5 {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #856404;
+        }
+
+        .warning-content p {
+            margin: 0;
+            color: #856404;
+        }
+
+        .vet-consultation {
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        }
+
+        .vet-consultation img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .consultation-content {
+            padding: 60px;
+        }
+
+        .consultation-content h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-bottom: 20px;
+        }
+
+        .consultation-content p {
+            font-size: 1.1rem;
+            color: #6c757d;
+            margin-bottom: 30px;
+        }
+
+        .consultation-content ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+        }
+
+        .consultation-content ul li {
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: var(--dark-color);
+        }
+
+        .consultation-content ul li i {
+            color: #28a745;
+            font-size: 1.2rem;
+        }
+
+        .consultation-content .btn {
+            padding: 15px 30px;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 991px) {
+            .medicine-hero-banner {
+                padding: 40px;
+            }
+
+            .consultation-content {
+                padding: 40px;
+            }
+
+            .floating-card {
+                position: relative;
+                bottom: auto;
+                right: auto;
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .medicine-hero-banner {
+                padding: 30px 20px;
+            }
+
+            .medicine-content h3 {
+                font-size: 1.8rem;
+            }
+
+            .medicine-features {
+                gap: 15px;
+            }
+
+            .consultation-content {
+                padding: 30px;
+            }
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .feature-box {
+            text-align: center;
+            padding: 40px 30px;
+            border-radius: 15px;
+            background: var(--light-bg);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .feature-box:hover {
+            background: white;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+        }
+
+        .feature-box i {
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .feature-box h4 {
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        /* Testimonials */
+        .testimonials-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, rgba(255,107,53,0.05), rgba(74,144,226,0.05));
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            height: 100%;
+        }
+
+        .testimonial-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 3px solid var(--primary-color);
+        }
+
+        .testimonial-card .stars {
+            color: #ffc107;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #6c757d;
+        }
+
+        .testimonial-card h5 {
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        /* Certification Section */
+        .certification-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .premium-cert-card {
+            background: linear-gradient(135deg, #fff 0%, rgba(255,107,53,0.05) 100%);
+            border-radius: 30px;
+            padding: 60px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,107,53,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .premium-cert-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,107,53,0.03) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(0.8); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+        }
+
+        .vet-showcase {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .vet-photo-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
+
+        .vet-photo-wrapper img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .vet-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: var(--primary-color);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 5px 20px rgba(255,107,53,0.4);
+            border: 3px solid white;
+        }
+
+        .vet-credentials h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-bottom: 10px;
+        }
+
+        .vet-specialty {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .experience-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(74,144,226,0.1);
+            padding: 10px 25px;
+            border-radius: 30px;
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .cert-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cert-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .cert-header i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+        }
+
+        .cert-header h4 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--dark-color);
+            margin: 0;
+        }
+
+        .cert-document {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+            position: relative;
+            border: 2px solid rgba(74,144,226,0.2);
+        }
+
+        .cert-seal {
+            position: absolute;
+            top: -30px;
+            right: 30px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid white;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .cert-seal img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cert-text h5 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+        }
+
+        .cert-text p {
+            color: #6c757d;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .cert-signature {
+            text-align: right;
+            margin-top: 30px;
+        }
+
+        .cert-signature img {
+            height: 50px;
+            width: auto;
+            margin-bottom: 10px;
+            filter: contrast(1.5);
+        }
+
+        .cert-signature p {
+            font-weight: 600;
+            color: var(--dark-color);
+            margin: 0;
+        }
+
+        .qualifications {
+            background: rgba(74,144,226,0.05);
+            padding: 25px;
+            border-radius: 15px;
+        }
+
+        .qualifications h5 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .qualifications h5 i {
+            color: var(--accent-color);
+        }
+
+        .qualifications ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .qualifications ul li {
+            padding: 8px 0;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .qualifications ul li i {
+            color: #28a745;
+            font-size: 1.1rem;
+        }
+
+        .trust-quote {
+            margin-top: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(255,107,53,0.1), rgba(74,144,226,0.1));
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .trust-quote i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            opacity: 0.3;
+            position: absolute;
+            top: 20px;
+            left: 40px;
+        }
+
+        .trust-quote p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--dark-color);
+            font-style: italic;
+            margin: 0;
+            padding: 0 60px;
+        }
+
+        @media (max-width: 991px) {
+            .premium-cert-card {
+                padding: 40px 30px;
+            }
+            
+            .vet-photo-wrapper img {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .trust-quote p {
+                padding: 0 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .premium-cert-card {
+                padding: 30px 20px;
+            }
+            
+            .cert-seal {
+                width: 80px;
+                height: 80px;
+                top: -20px;
+                right: 20px;
+            }
+            
+            .trust-quote p {
+                padding: 0 20px;
+                font-size: 1rem;
+            }
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 80px 0;
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--primary-color);
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .contact-info-wrapper {
+            height: 100%;
+        }
+
+        .contact-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+
+        .contact-card.main-office {
+            background: linear-gradient(135deg, rgba(255,107,53,0.05), rgba(74,144,226,0.05));
+            border: 2px solid rgba(255,107,53,0.1);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-icon i {
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .contact-details h4 {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+
+        .contact-details p {
+            margin: 0;
+            color: #6c757d;
+            line-height: 1.6;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .contact-item {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .contact-item h5 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--dark-color);
+        }
+
+        .contact-item p {
+            margin: 0;
+            color: #6c757d;
+            font-size: 0.95rem;
+        }
+
+        .contact-form-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .contact-form-card h4 {
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+
+        .contact-form-card .form-control {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 12px 20px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-form-card .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(255,107,53,0.25);
+        }
+
+        .contact-form-card textarea {
+            resize: none;
+        }
+
+        .map-wrapper {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .map-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+
+        .map-header i {
+            font-size: 1.5rem;
+        }
+
+        .map-container {
+            flex: 1;
+            position: relative;
+        }
+
+        .map-container iframe {
+            filter: grayscale(20%);
+            transition: filter 0.3s ease;
+        }
+
+        .map-container:hover iframe {
+            filter: grayscale(0%);
+        }
+
+        .map-actions {
+            padding: 20px;
+            background: #f8f9fa;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .map-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            color: var(--dark-color);
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid #e0e0e0;
+        }
+
+        .map-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .transport-info {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .transport-info h5 {
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .transport-grid {
+            display: grid;
+            gap: 15px;
+        }
+
+        .transport-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .transport-item i {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        .contact-features {
+            margin-top: 60px;
+            padding-top: 60px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .contact-feature {
+            text-align: center;
+            padding: 30px 20px;
+            background: white;
+            border-radius: 15px;
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .contact-feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .contact-feature i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .contact-feature h5 {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+
+        .contact-feature p {
+            margin: 0;
+            color: #6c757d;
+        }
+
+        @media (max-width: 991px) {
+            .map-wrapper {
+                height: 400px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact-section {
+                padding: 60px 0;
+            }
+
+            .map-actions {
+                flex-direction: column;
+            }
+
+            .map-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .transport-item {
+                font-size: 0.9rem;
+            }
+
+            .transport-item i {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        footer h5 {
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer ul li {
+            margin-bottom: 10px;
+        }
+
+        footer ul li a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-section {
+                padding: 60px 0 40px;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: #ffffff;
+            color: var(--dark-color);
+            padding: 80px 0 0;
+            border-top: 1px solid #f0f0f0;
+            margin-top: 100px;
+        }
+
+        .footer-content {
+            padding-bottom: 60px;
+        }
+
+        .footer-brand {
+            margin-bottom: 30px;
+        }
+
+        .brand-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(255,107,53,0.2);
+        }
+
+        .brand-icon i {
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .footer-brand h4 {
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+
+        .footer-brand p {
+            color: #6c757d;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255,107,53,0.3);
+        }
+
+        footer h5 {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 25px;
+            color: var(--dark-color);
+            position: relative;
+        }
+
+        .footer-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-menu li {
+            margin-bottom: 12px;
+        }
+
+        .footer-menu a {
+            color: #6c757d;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .footer-menu a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-menu a:hover::after {
+            width: 100%;
+        }
+
+        .contact-info p {
+            margin-bottom: 12px;
+            color: #6c757d;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-info i {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            width: 20px;
+        }
+
+        .footer-bottom {
+            background: #f8f9fa;
+            padding: 25px 0;
+            text-align: center;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            footer {
+                padding: 60px 0 0;
+                margin-top: 60px;
+            }
+
+            .footer-content {
+                padding-bottom: 40px;
+            }
+
+            .brand-icon {
+                width: 50px;
+                height: 50px;
+            }
+
+            footer h5 {
+                margin-top: 30px;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-section {
+                padding: 60px 0 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <section class="header-section">
+        <div class="header-overlay"></div>
+        <div class="header-content">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="header-text">
+                            <div class="header-badge">
+                                <i class="bi bi-patch-check-fill"></i>
+                                <span>ร้านขายยาสัตว์เลี้ยงที่ได้รับอนุญาต</span>
+                            </div>
+                            <h1 class="header-title">ศูนย์รวมยาและอาหาร<br><span>สำหรับสัตว์เลี้ยงครบวงจร</span></h1>
+                            <p class="header-description">
+                                จำหน่ายยาสัตว์เลี้ยงคุณภาพสูง นำเข้าจากผู้ผลิตชั้นนำ 
+                                พร้อมคำแนะนำจากเภสัชกรและสัตวแพทย์ผู้เชี่ยวชาญ
+                            </p>
+                            <!-- <div class="header-stats">
+                                <div class="stat-item">
+                                    <h3>15+</h3>
+                                    <p>ปีประสบการณ์</p>
+                                </div>
+                                <div class="stat-item">
+                                    <h3>50k+</h3>
+                                    <p>ลูกค้าไว้วางใจ</p>
+                                </div>
+                                <div class="stat-item">
+                                    <h3>500+</h3>
+                                    <p>ผลิตภัณฑ์คุณภาพ</p>
+                                </div>
+                            </div> -->
+                            <div class="header-actions">
+                                <a href="#medicine" class="btn-header-primary">
+                                    <i class="bi bi-capsule"></i> เลือกซื้อยา
+                                </a>
+                                <a href="#contact" class="btn-header-secondary">
+                                    <i class="bi bi-chat-dots"></i> ปรึกษาฟรี
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="header-images">
+                            <div class="image-card card-1">
+                                <img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?w=300&h=200&fit=crop" alt="Happy dog with medicine">
+                                <div class="image-label">
+                                    <i class="bi bi-shield-check"></i> ยาปลอดภัย
+                                </div>
+                            </div>
+                            <div class="image-card card-2">
+                                <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=300&h=200&fit=crop" alt="Healthy cat">
+                                <div class="image-label">
+                                    <i class="bi bi-heart-pulse"></i> สุขภาพดี
+                                </div>
+                            </div>
+                            <div class="image-card card-3">
+                                <img src="https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=600&h=400&fit=crop" alt="Vet consultation">
+                                <div class="image-label">
+                                    <i class="bi bi-person-badge"></i> สัตวแพทย์รับรอง
+                                </div>
+                            </div>
+                            <div class="floating-badge">
+                                <i class="bi bi-award-fill"></i>
+                                <p>มาตรฐาน<br>GMP</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-wave">
+            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 60L48 55C96 50 192 40 288 38.3C384 36.7 480 43.3 576 48.3C672 53.3 768 56.7 864 55C960 53.3 1056 46.7 1152 41.7C1248 36.7 1344 33.3 1392 31.7L1440 30V120H1392C1344 120 1248 120 1152 120C1056 120 960 120 864 120C768 120 672 120 576 120C480 120 384 120 288 120C192 120 96 120 48 120H0V60Z" fill="white"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <div class="brand-logo">
+                    <i class="bi bi-heart-fill"></i>
+                </div>
+                <div class="brand-text">
+                    <span class="brand-name">PetFood Plus</span>
+                    <span class="brand-tagline">ดูแลสัตว์เลี้ยงด้วยใจ</span>
+                </div>
+            </a>
+            <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="toggler-icon"></span>
+                <span class="toggler-icon"></span>
+                <span class="toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">
+                            <i class="bi bi-house-door"></i>
+                            <span>หน้าแรก</span>
+                        </a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="#products">
+                            <i class="bi bi-box-seam"></i>
+                            <span>อาหาร</span>
+                        </a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#medicine">
+                            <i class="bi bi-capsule"></i>
+                            <span>บริการ</span>
+                        </a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="#about">
+                            <i class="bi bi-info-circle"></i>
+                            <span>เกี่ยวกับเรา</span>
+                        </a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">
+                            <i class="bi bi-telephone"></i>
+                            <span>ติดต่อ</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-actions">
+                    <a href="#" class="nav-icon-btn">
+                        <i class="bi bi-search"></i>
+                    </a>
+                    <a href="#" class="nav-icon-btn">
+                        <i class="bi bi-person"></i>
+                    </a>
+                    <a href="#" class="nav-cart-btn">
+                        <i class="bi bi-cart3"></i>
+                        <span class="cart-badge">3</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <!-- <section class="hero-section" id="home">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <h1>อาหารสัตว์เลี้ยง<br>คุณภาพระดับพรีเมียม</h1>
+                    <p>มอบสิ่งที่ดีที่สุดให้กับเพื่อนรักสี่ขาของคุณ ด้วยอาหารที่คัดสรรวัตถุดิบชั้นเยี่ยม</p>
+                    <a href="#products" class="btn-primary-custom me-3">เลือกซื้อสินค้า</a>
+                    <a href="#about" class="btn btn-outline-primary">เรียนรู้เพิ่มเติม</a>
+                </div>
+                <div class="col-lg-6 hero-image">
+                    <img src="https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=600&h=400&fit=crop" alt="Happy pets">
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Trust Badges -->
+    <section class="trust-badges">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-6 trust-badge">
+                    <i class="bi bi-shield-check"></i>
+                    <h5>ปลอดภัย 100%</h5>
+                    <p>ผ่านมาตรฐาน อย.</p>
+                </div>
+                <div class="col-md-3 col-6 trust-badge">
+                    <i class="bi bi-truck"></i>
+                    <h5>จัดส่งฟรี</h5>
+                    <p>เมื่อซื้อครบ 599 บาท</p>
+                </div>
+                <div class="col-md-3 col-6 trust-badge">
+                    <i class="bi bi-award"></i>
+                    <h5>รับประกันคุณภาพ</h5>
+                    <p>คืนเงิน 100%</p>
+                </div>
+                <div class="col-md-3 col-6 trust-badge">
+                    <i class="bi bi-headset"></i>
+                    <h5>บริการ 24/7</h5>
+                    <p>พร้อมให้คำปรึกษา</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <!-- <section class="product-section" id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>สินค้าขายดี</h2>
+                <p>อาหารคุณภาพสูงที่ได้รับความนิยมจากลูกค้า</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=400&h=300&fit=crop" alt="Dog food">
+                            <span class="product-badge">ขายดี</span>
+                        </div>
+                        <div class="product-details">
+                            <h4>Premium Dog Food</h4>
+                            <div class="rating">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <span class="text-muted">(128)</span>
+                            </div>
+                            <p class="price">฿890</p>
+                            <button class="btn btn-primary w-100">เพิ่มลงตะกร้า</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1615266508008-0ed5e6b24fb5?w=400&h=300&fit=crop" alt="Cat food">
+                            <span class="product-badge">ใหม่</span>
+                        </div>
+                        <div class="product-details">
+                            <h4>Gourmet Cat Food</h4>
+                            <div class="rating">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                                <span class="text-muted">(89)</span>
+                            </div>
+                            <p class="price">฿750</p>
+                            <button class="btn btn-primary w-100">เพิ่มลงตะกร้า</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?w=400&h=300&fit=crop" alt="Puppy food">
+                        </div>
+                        <div class="product-details">
+                            <h4>Puppy Growth Formula</h4>
+                            <div class="rating">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <span class="text-muted">(156)</span>
+                            </div>
+                            <p class="price">฿950</p>
+                            <button class="btn btn-primary w-100">เพิ่มลงตะกร้า</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1571873757135-38c5e79fc2ba?w=400&h=300&fit=crop" alt="Kitten food">
+                            <span class="product-badge">-15%</span>
+                        </div>
+                        <div class="product-details">
+                            <h4>Kitten Special Care</h4>
+                            <div class="rating">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star"></i>
+                                <span class="text-muted">(67)</span>
+                            </div>
+                            <p class="price">฿680 <small class="text-muted text-decoration-line-through">฿800</small></p>
+                            <button class="btn btn-primary w-100">เพิ่มลงตะกร้า</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Pet Medicine Section -->
+    <section class="medicine-section" id="medicine">
+        <div class="container">
+            <div class="section-title">
+                <h2>ยาและผลิตภัณฑ์สุขภาพสัตว์เลี้ยง</h2>
+                <p>ดูแลสุขภาพสัตว์เลี้ยงของคุณด้วยผลิตภัณฑ์คุณภาพจากแบรนด์ชั้นนำ</p>
+            </div>
+            
+            <div class="medicine-hero-banner">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="medicine-content">
+                            <div class="medicine-badge">
+                                <i class="bi bi-shield-check"></i>
+                                <span>ผลิตภัณฑ์ได้มาตรฐาน อย.</span>
+                            </div>
+                            <h3>การดูแลสุขภาพที่ครบวงจร</h3>
+                            <p>จำหน่ายยาและผลิตภัณฑ์สุขภาพสำหรับสัตว์เลี้ยง ทั้งยาถ่ายพยาธิ ยาป้องกันเห็บหมัด วิตามินบำรุง และอื่นๆ ภายใต้คำแนะนำจากสัตวแพทย์</p>
+                            <div class="medicine-features">
+                                <div class="med-feature">
+                                    <i class="bi bi-patch-check-fill"></i>
+                                    <span>ของแท้ 100%</span>
+                                </div>
+                                <div class="med-feature">
+                                    <i class="bi bi-thermometer-half"></i>
+                                    <span>ควบคุมอุณหภูมิ</span>
+                                </div>
+                                <div class="med-feature">
+                                    <i class="bi bi-calendar-check"></i>
+                                    <span>ตรวจสอบวันหมดอายุ</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="medicine-image">
+                            <img src="https://pharmacy.info-meawtion.com/images/pet-02.jpg" alt="Veterinary care">
+                            <div class="floating-card">
+                                <i class="bi bi-heart-pulse-fill"></i>
+                                <p>สุขภาพดี เริ่มต้นที่นี่</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="medicine-categories">
+                <div class="row g-4">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="category-card">
+                            <div class="category-icon">
+                                <i class="bi bi-bug"></i>
+                            </div>
+                            <h4>ยาถ่ายพยาธิ</h4>
+                            <p>ป้องกันและกำจัดพยาธิทุกชนิด</p>
+                            <a href="#" class="category-link">ดูสินค้า <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="category-card">
+                            <div class="category-icon">
+                                <i class="bi bi-shield-plus"></i>
+                            </div>
+                            <h4>ยาป้องกันเห็บหมัด</h4>
+                            <p>ปกป้องจากปรสิตภายนอก</p>
+                            <a href="#" class="category-link">ดูสินค้า <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="category-card">
+                            <div class="category-icon">
+                                <i class="bi bi-capsule"></i>
+                            </div>
+                            <h4>วิตามินและอาหารเสริม</h4>
+                            <p>บำรุงร่างกายให้แข็งแรง</p>
+                            <a href="#" class="category-link">ดูสินค้า <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="category-card">
+                            <div class="category-icon">
+                                <i class="bi bi-bandaid"></i>
+                            </div>
+                            <h4>ยาทาและปฐมพยาบาล</h4>
+                            <p>รักษาบาดแผลและโรคผิวหนัง</p>
+                            <a href="#" class="category-link">ดูสินค้า <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="featured-medicines">
+                <h3 class="text-center mb-5">ยาและผลิตภัณฑ์ยอดนิยม</h3>
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="medicine-card">
+                            <div class="medicine-img">
+                                <img src="https://images.unsplash.com/photo-1576669801945-7a346954da5a?w=400&h=300&fit=crop" alt="Pet medicine">
+                                <div class="med-badge">ขายดี</div>
+                            </div>
+                            <div class="medicine-info">
+                                <h5>NexGard Spectra</h5>
+                                <p class="med-desc">ยาเม็ดเคี้ยวกำจัดเห็บหมัด พยาธิหัวใจ</p>
+                                <div class="med-meta">
+                                    <span class="med-size"><i class="bi bi-box"></i> สำหรับสุนัข 7.5-15 kg</span>
+                                    <span class="med-type"><i class="bi bi-shield-fill-check"></i> ยาควบคุมพิเศษ</span>
+                                </div>
+                                <div class="price-action">
+                                    <p class="med-price">฿1,290</p>
+                                    <button class="btn btn-primary">สั่งซื้อ</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="medicine-card">
+                            <div class="medicine-img">
+                                <img src="https://images.unsplash.com/photo-1587854680352-936b22b91030?w=400&h=300&fit=crop" alt="Cat medicine">
+                                <div class="med-badge new">ใหม่</div>
+                            </div>
+                            <div class="medicine-info">
+                                <h5>Revolution Plus</h5>
+                                <p class="med-desc">ยาหยดหลังป้องกันปรสิตสำหรับแมว</p>
+                                <div class="med-meta">
+                                    <span class="med-size"><i class="bi bi-box"></i> แมว 2.8-5.5 kg</span>
+                                    <span class="med-type"><i class="bi bi-shield-fill-check"></i> ยาควบคุมพิเศษ</span>
+                                </div>
+                                <div class="price-action">
+                                    <p class="med-price">฿890</p>
+                                    <button class="btn btn-primary">สั่งซื้อ</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="medicine-card">
+                            <div class="medicine-img">
+                                <img src="https://images.unsplash.com/photo-1553688297-833d09932d31?w=400&h=300&fit=crop" alt="Vitamins">
+                                <div class="med-badge discount">-20%</div>
+                            </div>
+                            <div class="medicine-info">
+                                <h5>Nutri-Plus Gel</h5>
+                                <p class="med-desc">เจลวิตามินเสริมพลังงานสูง</p>
+                                <div class="med-meta">
+                                    <span class="med-size"><i class="bi bi-box"></i> ขนาด 120g</span>
+                                    <span class="med-type"><i class="bi bi-star-fill"></i> อาหารเสริม</span>
+                                </div>
+                                <div class="price-action">
+                                    <p class="med-price">฿450 <small class="text-muted text-decoration-line-through">฿560</small></p>
+                                    <button class="btn btn-primary">สั่งซื้อ</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="medicine-warning">
+                <div class="warning-content">
+                    <i class="bi bi-exclamation-triangle-fill"></i>
+                    <div>
+                        <h5>คำเตือนสำคัญ</h5>
+                        <p>ควรปรึกษาสัตวแพทย์ก่อนใช้ยา อ่านฉลากและเอกสารกำกับยาโดยละเอียด เก็บยาให้พ้นมือเด็กและสัตว์เลี้ยง</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vet-consultation">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <img src="https://pharmacy.info-meawtion.com/images/pet-03.jpg" class="img-fluid" alt="Vet consultation">
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="consultation-content">
+                            <h3>ปรึกษาสัตวแพทย์ออนไลน์ฟรี</h3>
+                            <p>ไม่แน่ใจว่าควรเลือกยาตัวไหน? ทีมสัตวแพทย์ของเราพร้อมให้คำปรึกษาฟรี</p>
+                            <ul>
+                                <li><i class="bi bi-check-circle"></i> ตอบคำถามภายใน 30 นาที</li>
+                                <li><i class="bi bi-check-circle"></i> แนะนำยาที่เหมาะสมกับสัตว์เลี้ยง</li>
+                                <li><i class="bi bi-check-circle"></i> ให้คำแนะนำการใช้ยาอย่างถูกต้อง</li>
+                            </ul>
+                            <button class="btn btn-primary btn-lg">
+                                <i class="bi bi-chat-dots"></i> เริ่มแชทกับสัตวแพทย์
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+        <!-- Veterinary Certification Section -->
+    <section class="certification-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>รับรองโดยสัตวแพทย์ผู้เชี่ยวชาญ</h2>
+                <p>มั่นใจในคุณภาพ ด้วยการรับรองจากผู้เชี่ยวชาญด้านโภชนาการสัตว์</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="premium-cert-card">
+                        <div class="row align-items-center">
+                            <div class="col-lg-5">
+                                <div class="vet-showcase">
+                                    <div class="vet-photo-wrapper">
+                                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=400&fit=crop" alt="Dr. Somsak">
+                                        <div class="vet-badge">
+                                            <i class="bi bi-patch-check-fill"></i>
+                                        </div>
+                                    </div>
+                                    <div class="vet-credentials">
+                                        <h3>นพ.สพ.ดร.สมศักดิ์ วิชัยดิษฐ</h3>
+                                        <p class="vet-specialty">สัตวแพทย์ผู้เชี่ยวชาญด้านโภชนาการสัตว์เลี้ยง</p>
+                                        <div class="experience-badge">
+                                            <i class="bi bi-award-fill"></i>
+                                            <span>ประสบการณ์ 20 ปี</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="cert-content">
+                                    <div class="cert-header">
+                                        <i class="bi bi-shield-fill-check"></i>
+                                        <h4>ใบรับรองมาตรฐานคุณภาพ</h4>
+                                    </div>
+                                    <div class="cert-document">
+                                        <!-- <div class="cert-seal">
+                                            <img src="https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?w=200&h=200&fit=crop" alt="Official Seal">
+                                        </div> -->
+                                        <div class="cert-text">
+                                            <h5>หนังสือรับรองคุณภาพผลิตภัณฑ์</h5>
+                                            <p>ข้าพเจ้าขอรับรองว่าผลิตภัณฑ์อาหารสัตว์เลี้ยงของ PetFood Plus ได้ผ่านการตรวจสอบและวิเคราะห์คุณค่าทางโภชนาการอย่างครบถ้วน เหมาะสมกับการเจริญเติบโตและสุขภาพของสัตว์เลี้ยง</p>
+                                            <div class="cert-signature">
+                                                <!-- <img src="https://images.unsplash.com/photo-1509822929063-6b6cfc9b42f2?w=300&h=100&fit=crop" alt="Signature"> -->
+                                                <p>นพ.สพ.ดร.สมศักดิ์ วิชัยดิษฐ</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="qualifications">
+                                        <h5><i class="bi bi-mortarboard-fill"></i> คุณวุฒิและใบอนุญาต</h5>
+                                        <ul>
+                                            <li><i class="bi bi-check-circle-fill"></i> ปริญญาเอก สาขาโภชนาการสัตว์ จุฬาลงกรณ์มหาวิทยาลัย</li>
+                                            <li><i class="bi bi-check-circle-fill"></i> Board Certified Veterinary Nutritionist (ACVN)</li>
+                                            <li><i class="bi bi-check-circle-fill"></i> ใบอนุญาตประกอบวิชาชีพการสัตวแพทย์ เลขที่ 12345</li>
+                                            <li><i class="bi bi-check-circle-fill"></i> สมาชิกสัตวแพทยสภา แห่งประเทศไทย</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="trust-quote">
+                            <i class="bi bi-quote"></i>
+                            <p>"ในฐานะสัตวแพทย์ที่มีประสบการณ์ด้านโภชนาการสัตว์มากว่า 20 ปี ผมขอรับรองว่าผลิตภัณฑ์ของ PetFood Plus มีคุณภาพสูง ปลอดภัย และให้คุณค่าทางโภชนาการที่ครบถ้วน เหมาะสมกับสัตว์เลี้ยงในทุกช่วงวัย"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Features Section -->
+    <section class="features-section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>ทำไมต้องเลือกเรา</h2>
+                <p>คุณสมบัติที่ทำให้เราแตกต่าง</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-box">
+                        <i class="bi bi-star"></i>
+                        <h4>วัตถุดิบคุณภาพสูง</h4>
+                        <p>คัดสรรวัตถุดิบเกรดพรีเมียมจากแหล่งผลิตที่น่าเชื่อถือ ปลอดสารเคมีอันตราย</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-box">
+                        <i class="bi bi-heart"></i>
+                        <h4>สูตรโดยสัตวแพทย์</h4>
+                        <p>พัฒนาสูตรอาหารโดยทีมสัตวแพทย์และนักโภชนาการสัตว์ที่มีประสบการณ์</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-box">
+                        <i class="bi bi-check-circle"></i>
+                        <h4>ส่วนผสมจากธรรมชาติ</h4>
+                        <p>ใช้ส่วนผสมจากธรรมชาติ 100% ไม่มีสารกันบูด สีสังเคราะห์ หรือแต่งกลิ่น</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>พร้อมมอบสิ่งที่ดีที่สุดให้สัตว์เลี้ยงของคุณ?</h2>
+            <p>สมัครสมาชิกวันนี้ รับส่วนลด 20% สำหรับการสั่งซื้อครั้งแรก</p>
+            <a href="#" class="btn-white">สมัครสมาชิกฟรี</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>ติดต่อเรา</h2>
+                <p>พร้อมให้บริการและตอบทุกคำถามของคุณ</p>
+            </div>
+            
+            <div class="row g-5">
+                <div class="col-lg-5">
+                    <div class="contact-info-wrapper">
+                        <div class="contact-card main-office">
+                            <div class="contact-icon">
+                                <i class="bi bi-building"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>สำนักงานใหญ่</h4>
+                                <p>123 ถนนสุขุมวิท แขวงคลองตัน<br>เขตคลองเตย กรุงเทพฯ 10110</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="bi bi-clock"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>เวลาทำการ</h4>
+                                <p><strong>จันทร์ - ศุกร์:</strong> 09:00 - 18:00<br>
+                                <strong>เสาร์ - อาทิตย์:</strong> 10:00 - 17:00</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-grid">
+                            <div class="contact-item">
+                                <i class="bi bi-telephone-fill"></i>
+                                <div>
+                                    <h5>โทรศัพท์</h5>
+                                    <p>02-123-4567</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="bi bi-whatsapp"></i>
+                                <div>
+                                    <h5>WhatsApp</h5>
+                                    <p>081-234-5678</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="bi bi-envelope-fill"></i>
+                                <div>
+                                    <h5>อีเมล</h5>
+                                    <p>info@petfoodplus.com</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="bi bi-line"></i>
+                                <div>
+                                    <h5>LINE Official</h5>
+                                    <p>@petfoodplus</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- <div class="contact-form-card">
+                            <h4>ส่งข้อความถึงเรา</h4>
+                            <form>
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" placeholder="ชื่อ-นามสกุล">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="email" class="form-control" placeholder="อีเมล">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="tel" class="form-control" placeholder="เบอร์โทรศัพท์">
+                                </div>
+                                <div class="mb-3">
+                                    <textarea class="form-control" rows="4" placeholder="ข้อความของคุณ"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">
+                                    <i class="bi bi-send"></i> ส่งข้อความ
+                                </button>
+                            </form>
+                        </div> -->
+                    </div>
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="map-wrapper">
+                        <div class="map-header">
+                            <i class="bi bi-geo-alt-fill"></i>
+                            <span>ตำแหน่งของเรา</span>
+                        </div>
+                        <div class="map-container">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.5981661577627!2d100.56978731531648!3d13.742942990351865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29ecde0b3d2c9%3A0x104b8f2a7e9f9e7d!2z4Liq4Li44LiC4Li44Lih4Lin4Li04LiXIDIzIOC4geC4o-C4uOC4h-C5gOC4l-C4nuC4oeC4q-C4suC4meC4hOC4ow!5e0!3m2!1sth!2sth!4v1234567890123" 
+                                width="100%" 
+                                height="100%" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                        <div class="map-actions">
+                            <a href="https://goo.gl/maps/example" target="_blank" class="map-btn">
+                                <i class="bi bi-map"></i> เปิดใน Google Maps
+                            </a>
+                            <a href="#" class="map-btn">
+                                <i class="bi bi-car-front"></i> นำทาง
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- <div class="transport-info">
+                        <h5><i class="bi bi-bus-front"></i> การเดินทาง</h5>
+                        <div class="transport-grid">
+                            <div class="transport-item">
+                                <i class="bi bi-train-front"></i>
+                                <span><strong>BTS:</strong> สถานีอโศก (ทางออก 3) เดิน 5 นาที</span>
+                            </div>
+                            <div class="transport-item">
+                                <i class="bi bi-train-subway"></i>
+                                <span><strong>MRT:</strong> สถานีสุขุมวิท เดิน 7 นาที</span>
+                            </div>
+                            <div class="transport-item">
+                                <i class="bi bi-p-circle-fill"></i>
+                                <span><strong>ที่จอดรถ:</strong> มีบริการที่จอดรถฟรี 50 คัน</span>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+
+            <div class="contact-features">
+                <div class="row g-4">
+                    <div class="col-md-3 col-6">
+                        <div class="contact-feature">
+                            <i class="bi bi-headset"></i>
+                            <h5>บริการลูกค้า 24/7</h5>
+                            <p>พร้อมตอบทุกคำถาม</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="contact-feature">
+                            <i class="bi bi-shield-check"></i>
+                            <h5>ปลอดภัย 100%</h5>
+                            <p>ข้อมูลของคุณถูกเข้ารหัส</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="contact-feature">
+                            <i class="bi bi-lightning-charge"></i>
+                            <h5>ตอบกลับรวดเร็ว</h5>
+                            <p>ภายใน 30 นาที</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="contact-feature">
+                            <i class="bi bi-people"></i>
+                            <h5>ทีมผู้เชี่ยวชาญ</h5>
+                            <p>พร้อมให้คำแนะนำ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="row g-5">
+                    <div class="col-lg-4">
+                        <div class="footer-brand">
+                            <div class="brand-icon">
+                                <i class="bi bi-heart-fill"></i>
+                            </div>
+                            <h4>PetFood Plus</h4>
+                            <p>ดูแลสัตว์เลี้ยงที่คุณรักด้วยผลิตภัณฑ์คุณภาพ</p>
+                            <div class="social-links">
+                                <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                                <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                                <a href="#" aria-label="Line"><i class="bi bi-line"></i></a>
+                                <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <h5>เมนู</h5>
+                        <ul class="footer-menu">
+                            <li><a href="#home">หน้าแรก</a></li>
+                            <li><a href="#products">อาหาร</a></li>
+                            <li><a href="#medicine">ยา</a></li>
+                            <li><a href="#about">เกี่ยวกับเรา</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <h5>บริการ</h5>
+                        <ul class="footer-menu">
+                            <li><a href="#">จัดส่งสินค้า</a></li>
+                            <li><a href="#">คืนสินค้า</a></li>
+                            <li><a href="#">ติดตามพัสดุ</a></li>
+                            <li><a href="#">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <h5>ติดต่อ</h5>
+                        <div class="contact-info">
+                            <p><i class="bi bi-geo-alt"></i> 123 ถ.สุขุมวิท กรุงเทพฯ 10110</p>
+                            <p><i class="bi bi-telephone"></i> 02-123-4567</p>
+                            <p><i class="bi bi-envelope"></i> info@petfoodplus.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 PetFood Plus. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    const navbarCollapse = document.querySelector('.navbar-collapse');
+                    if (navbarCollapse.classList.contains('show')) {
+                        const bsCollapse = new bootstrap.Collapse(navbarCollapse);
+                        bsCollapse.hide();
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

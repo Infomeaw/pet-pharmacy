@@ -1,0 +1,36 @@
+<IfModule mod_rewrite.c>
+
+	RewriteEngine On
+
+
+	# Redirect www to non-www
+	# RewriteCond %{HTTP_HOST} ^www\.biomediathailand\.com [NC]
+	# RewriteRule ^(.*)$ https://biomediathailand.com/$1 [L,R=301]
+
+	# Check if .html file already exists -- if so, do nothing
+	RewriteCond %{REQUEST_FILENAME} -f
+	RewriteCond %{THE_REQUEST} (.*)\.html
+	RewriteRule ^.*$ - [NC,L]
+
+	
+	# Check if .php file already exists -- if so, rewrite extension to .html
+
+	RewriteCond %{REQUEST_FILENAME} -f
+	RewriteCond %{THE_REQUEST} (.*)\.php	
+	RewriteRule ^(.*)\.php $1.html [R=301,L]
+
+	RewriteCond %{THE_REQUEST} (.*)\.html
+	RewriteRule ^(.*)\.html $1.php [L]
+
+	# Remove .html from URL
+	RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+	# Hide a specific file
+	<Files .env>
+		Order allow,deny
+		Deny from all
+	</Files>
+</IfModule>
+
+
+
