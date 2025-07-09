@@ -104,6 +104,7 @@
             position: relative;
             transition: all 0.3s ease;
             font-weight: 600;
+            cursor: pointer;
         }
 
         .nav-cart-btn:hover {
@@ -278,6 +279,11 @@
             background: rgba(255,107,53,0.1);
         }
 
+        .quantity-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
         .quantity-input {
             width: 60px;
             text-align: center;
@@ -427,6 +433,37 @@
             color: white;
         }
 
+        /* Animation */
+        .fade-in {
+            animation: fadeIn 0.5s ease;
+        }
+
+        .fade-out {
+            animation: fadeOut 0.3s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .page-title h1 {
@@ -469,22 +506,6 @@
                 margin-top: 30px;
             }
         }
-
-        /* Animation */
-        .fade-in {
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
     </style>
 </head>
 <body>
@@ -509,7 +530,7 @@
                         <a class="nav-link" href="#home">หน้าแรก</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#products">สินค้าทั้งหมด</a>
+                        <a class="nav-link" href="#products" onclick="goToProducts()">สินค้าทั้งหมด</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#about">เกี่ยวกับเรา</a>
@@ -518,11 +539,11 @@
                         <a class="nav-link" href="#contact">ติดต่อ</a>
                     </li>
                 </ul>
-                <a href="#cart" class="nav-cart-btn">
+                <div class="nav-cart-btn">
                     <i class="bi bi-cart3"></i>
                     <span>ตะกร้า</span>
-                    <span class="cart-badge" id="cartCount">3</span>
-                </a>
+                    <span class="cart-badge" id="cartCount">0</span>
+                </div>
             </div>
         </div>
     </nav>
@@ -533,7 +554,7 @@
             <h1>ตะกร้าสินค้า</h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#products">สินค้าทั้งหมด</a></li>
+                    <li class="breadcrumb-item"><a href="#products" onclick="goToProducts()">สินค้าทั้งหมด</a></li>
                     <li class="breadcrumb-item active">ตะกร้าสินค้า</li>
                 </ol>
             </nav>
@@ -549,81 +570,22 @@
                     <div class="cart-table fade-in" id="cartWithItems">
                         <div class="cart-header">
                             <h3 class="cart-title">รายการสินค้าในตะกร้า</h3>
-                            <span class="cart-count">3 รายการ</span>
+                            <span class="cart-count" id="cartItemCount">0 รายการ</span>
                         </div>
 
-                        <!-- Cart Item 1 -->
-                        <div class="cart-item">
-                            <div class="cart-item-image">
-                                <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=400&h=400&fit=crop" alt="Royal Canin Adult">
-                            </div>
-                            <div class="cart-item-info">
-                                <div class="cart-item-name">Royal Canin Adult สำหรับสุนัขโตพันธุ์กลาง</div>
-                                <div class="cart-item-details">ขนาด: 15 กิโลกรัม | รส: เนื้อไก่</div>
-                                <div class="cart-item-brand">Royal Canin</div>
-                            </div>
-                            <div class="cart-item-quantity">
-                                <button class="quantity-btn" onclick="decreaseQuantity(1)">-</button>
-                                <input type="number" class="quantity-input" value="2" min="1" id="qty1">
-                                <button class="quantity-btn" onclick="increaseQuantity(1)">+</button>
-                            </div>
-                            <div class="cart-item-price" id="price1">฿2,890</div>
-                            <div class="cart-item-remove" onclick="removeItem(1)">
-                                <i class="bi bi-trash"></i>
-                            </div>
-                        </div>
-
-                        <!-- Cart Item 2 -->
-                        <div class="cart-item">
-                            <div class="cart-item-image">
-                                <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=400&h=400&fit=crop" alt="Whiskas Cat Food">
-                            </div>
-                            <div class="cart-item-info">
-                                <div class="cart-item-name">Whiskas อาหารเปียกแมวโต รสทูน่าในเยลลี่</div>
-                                <div class="cart-item-details">ขนาด: 85g x 12 ซอง | รส: ทูน่า</div>
-                                <div class="cart-item-brand">Whiskas</div>
-                            </div>
-                            <div class="cart-item-quantity">
-                                <button class="quantity-btn" onclick="decreaseQuantity(2)">-</button>
-                                <input type="number" class="quantity-input" value="1" min="1" id="qty2">
-                                <button class="quantity-btn" onclick="increaseQuantity(2)">+</button>
-                            </div>
-                            <div class="cart-item-price" id="price2">฿359</div>
-                            <div class="cart-item-remove" onclick="removeItem(2)">
-                                <i class="bi bi-trash"></i>
-                            </div>
-                        </div>
-
-                        <!-- Cart Item 3 -->
-                        <div class="cart-item">
-                            <div class="cart-item-image">
-                                <img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?w=400&h=400&fit=crop" alt="Dog Toy">
-                            </div>
-                            <div class="cart-item-info">
-                                <div class="cart-item-name">ของเล่นลูกบอลเชือกสำหรับสุนัข</div>
-                                <div class="cart-item-details">ขนาด: กลาง | วัสดุ: เชือกฝ้าย</div>
-                                <div class="cart-item-brand">PetToy</div>
-                            </div>
-                            <div class="cart-item-quantity">
-                                <button class="quantity-btn" onclick="decreaseQuantity(3)">-</button>
-                                <input type="number" class="quantity-input" value="1" min="1" id="qty3">
-                                <button class="quantity-btn" onclick="increaseQuantity(3)">+</button>
-                            </div>
-                            <div class="cart-item-price" id="price3">฿129</div>
-                            <div class="cart-item-remove" onclick="removeItem(3)">
-                                <i class="bi bi-trash"></i>
-                            </div>
+                        <div id="cartItemsContainer">
+                            <!-- Cart items will be dynamically loaded here -->
                         </div>
                     </div>
 
-                    <!-- Empty Cart (Hidden by default) -->
+                    <!-- Empty Cart -->
                     <div class="empty-cart" id="emptyCart" style="display: none;">
                         <div class="empty-icon">
                             <i class="bi bi-cart-x"></i>
                         </div>
                         <h3 class="empty-title">ตะกร้าสินค้าว่างเปล่า</h3>
                         <p class="empty-text">คุณยังไม่มีสินค้าในตะกร้า เลือกซื้อสินค้าที่คุณต้องการได้เลย</p>
-                        <a href="#products" class="shop-now-btn">
+                        <a href="#products" class="shop-now-btn" onclick="goToProducts()">
                             <i class="bi bi-bag-plus"></i>
                             เลือกซื้อสินค้า
                         </a>
@@ -631,37 +593,37 @@
                 </div>
 
                 <div class="col-lg-4">
-                    <div class="cart-summary fade-in">
+                    <div class="cart-summary fade-in" id="cartSummary">
                         <h3 class="summary-title">สรุปคำสั่งซื้อ</h3>
                         
                         <div class="summary-row">
                             <span>ราคาสินค้า</span>
-                            <span id="subtotal">฿3,378</span>
+                            <span id="subtotal">฿0</span>
                         </div>
                         <div class="summary-row">
                             <span>ส่วนลด</span>
-                            <span id="discount" style="color: #28a745;">-฿100</span>
+                            <span id="discount" style="color: #28a745;">-฿0</span>
                         </div>
                         <div class="summary-row">
                             <span>ค่าจัดส่ง</span>
-                            <span id="shipping">฿50</span>
+                            <span id="shipping">฿0</span>
                         </div>
                         <div class="summary-row total">
                             <span>รวมทั้งหมด</span>
-                            <span id="total">฿3,328</span>
+                            <span id="total">฿0</span>
                         </div>
 
                         <button class="checkout-btn" onclick="proceedToCheckout()">
                             <i class="bi bi-credit-card"></i> ดำเนินการชำระเงิน
                         </button>
                         
-                        <button class="continue-shopping" onclick="continueShopping()">
+                        <button class="continue-shopping" onclick="goToProducts()">
                             <i class="bi bi-arrow-left"></i> เลือกซื้อสินค้าเพิ่ม
                         </button>
 
                         <div class="mt-4">
                             <p class="text-muted text-center mb-2">
-                                <i class="bi bi-truck"></i> จัดส่งฟรีเมื่อซื้อครบ ฿1,000
+                                <i class="bi bi-truck"></i> จัดส่งฟรีเมื่อซื้อครับ ฿1,000
                             </p>
                             <p class="text-muted text-center">
                                 <i class="bi bi-shield-check"></i> รับประกันสินค้า 100%
@@ -675,61 +637,159 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Sample cart data
-        let cartItems = [
-            { id: 1, name: 'Royal Canin Adult สำหรับสุนัขโตพันธุ์กลาง', price: 1445, quantity: 2 },
-            { id: 2, name: 'Whiskas อาหารเปียกแมวโต รสทูน่าในเยลลี่', price: 359, quantity: 1 },
-            { id: 3, name: 'ของเล่นลูกบอลเชือกสำหรับสุนัข', price: 129, quantity: 1 }
-        ];
+        // Cart management system
+        let cart = [];
+
+        // Load cart and initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCartFromStorage();
+            displayCartItems();
+            updateSummary();
+            updateCartDisplay();
+        });
+
+        // Load cart from localStorage
+        function loadCartFromStorage() {
+            const savedCart = localStorage.getItem('petfood_cart');
+            if (savedCart) {
+                cart = JSON.parse(savedCart);
+            }
+        }
+
+        // Save cart to localStorage
+        function saveCartToStorage() {
+            localStorage.setItem('petfood_cart', JSON.stringify(cart));
+        }
+
+        // Display cart items
+        function displayCartItems() {
+            const container = document.getElementById('cartItemsContainer');
+            const cartWithItems = document.getElementById('cartWithItems');
+            const emptyCart = document.getElementById('emptyCart');
+            const cartSummary = document.getElementById('cartSummary');
+
+            if (cart.length === 0) {
+                cartWithItems.style.display = 'none';
+                emptyCart.style.display = 'block';
+                cartSummary.style.display = 'none';
+                return;
+            }
+
+            cartWithItems.style.display = 'block';
+            emptyCart.style.display = 'none';
+            cartSummary.style.display = 'block';
+
+            container.innerHTML = '';
+
+            cart.forEach((item, index) => {
+                const cartItemHTML = `
+                    <div class="cart-item" id="cart-item-${item.id}">
+                        <div class="cart-item-image">
+                            <img src="${item.image}" alt="${item.name}">
+                        </div>
+                        <div class="cart-item-info">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-details">หมวดหมู่: ${item.category}</div>
+                            <div class="cart-item-brand">PetFood Plus</div>
+                        </div>
+                        <div class="cart-item-quantity">
+                            <button class="quantity-btn" onclick="decreaseQuantity(${item.id})" ${item.quantity <= 1 ? 'disabled' : ''}>-</button>
+                            <input type="number" class="quantity-input" value="${item.quantity}" min="1" id="qty-${item.id}" onchange="updateQuantity(${item.id}, this.value)">
+                            <button class="quantity-btn" onclick="increaseQuantity(${item.id})">+</button>
+                        </div>
+                        <div class="cart-item-price" id="price-${item.id}">฿${(item.price * item.quantity).toLocaleString()}</div>
+                        <div class="cart-item-remove" onclick="removeItem(${item.id})">
+                            <i class="bi bi-trash"></i>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += cartItemHTML;
+            });
+
+            // Update cart count display
+            document.getElementById('cartItemCount').textContent = `${cart.length} รายการ`;
+        }
 
         // Increase quantity
         function increaseQuantity(itemId) {
-            const item = cartItems.find(item => item.id === itemId);
+            const item = cart.find(item => item.id === itemId);
             if (item) {
                 item.quantity++;
-                updateDisplay(itemId);
+                updateItemDisplay(itemId);
                 updateSummary();
+                updateCartDisplay();
+                saveCartToStorage();
             }
         }
 
         // Decrease quantity
         function decreaseQuantity(itemId) {
-            const item = cartItems.find(item => item.id === itemId);
+            const item = cart.find(item => item.id === itemId);
             if (item && item.quantity > 1) {
                 item.quantity--;
-                updateDisplay(itemId);
+                updateItemDisplay(itemId);
                 updateSummary();
+                updateCartDisplay();
+                saveCartToStorage();
             }
         }
 
-        // Remove item
-        function removeItem(itemId) {
-            if (confirm('คุณต้องการลบสินค้านี้ออกจากตะกร้าหรือไม่?')) {
-                cartItems = cartItems.filter(item => item.id !== itemId);
-                document.querySelector(`.cart-item:nth-child(${itemId + 1})`).remove();
+        // Update quantity from input
+        function updateQuantity(itemId, newQuantity) {
+            const item = cart.find(item => item.id === itemId);
+            const quantity = parseInt(newQuantity);
+            
+            if (item && quantity >= 1) {
+                item.quantity = quantity;
+                updateItemDisplay(itemId);
                 updateSummary();
-                updateCartCount();
-                
-                if (cartItems.length === 0) {
-                    showEmptyCart();
-                }
+                updateCartDisplay();
+                saveCartToStorage();
+            } else if (item) {
+                // Reset to current quantity if invalid input
+                document.getElementById(`qty-${itemId}`).value = item.quantity;
             }
         }
 
         // Update display for specific item
-        function updateDisplay(itemId) {
-            const item = cartItems.find(item => item.id === itemId);
+        function updateItemDisplay(itemId) {
+            const item = cart.find(item => item.id === itemId);
             if (item) {
-                document.getElementById(`qty${itemId}`).value = item.quantity;
-                document.getElementById(`price${itemId}`).textContent = `฿${(item.price * item.quantity).toLocaleString()}`;
+                document.getElementById(`qty-${itemId}`).value = item.quantity;
+                document.getElementById(`price-${itemId}`).textContent = `฿${(item.price * item.quantity).toLocaleString()}`;
+                
+                // Update decrease button state
+                const decreaseBtn = document.querySelector(`#cart-item-${itemId} .quantity-btn`);
+                if (item.quantity <= 1) {
+                    decreaseBtn.disabled = true;
+                } else {
+                    decreaseBtn.disabled = false;
+                }
             }
         }
 
-        // Update summary
+        // Remove item from cart
+        function removeItem(itemId) {
+            if (confirm('คุณต้องการลบสินค้านี้ออกจากตะกร้าหรือไม่?')) {
+                // Add fade out animation
+                const itemElement = document.getElementById(`cart-item-${itemId}`);
+                itemElement.classList.add('fade-out');
+                
+                setTimeout(() => {
+                    cart = cart.filter(item => item.id !== itemId);
+                    saveCartToStorage();
+                    displayCartItems();
+                    updateSummary();
+                    updateCartDisplay();
+                }, 300);
+            }
+        }
+
+        // Update cart summary
         function updateSummary() {
-            const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            const discount = 100;
-            const shipping = subtotal >= 1000 ? 0 : 50;
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const discount = subtotal > 500 ? 100 : 0; // ส่วนลด 100 บาทเมื่อซื้อครบ 500 บาท
+            const shipping = subtotal >= 1000 ? 0 : 50; // จัดส่งฟรีเมื่อซื้อครบ 1000 บาท
             const total = subtotal - discount + shipping;
 
             document.getElementById('subtotal').textContent = `฿${subtotal.toLocaleString()}`;
@@ -737,66 +797,117 @@
             document.getElementById('shipping').textContent = shipping === 0 ? 'ฟรี' : `฿${shipping}`;
             document.getElementById('total').textContent = `฿${total.toLocaleString()}`;
 
-            // Update shipping message
+            // Update shipping text color
+            const shippingElement = document.getElementById('shipping');
             if (shipping === 0) {
-                document.getElementById('shipping').style.color = '#28a745';
+                shippingElement.style.color = '#28a745';
+            } else {
+                shippingElement.style.color = '';
             }
         }
 
-        // Update cart count
-        function updateCartCount() {
-            const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
-            document.getElementById('cartCount').textContent = totalItems;
-            document.querySelector('.cart-count').textContent = `${cartItems.length} รายการ`;
-        }
-
-        // Show empty cart
-        function showEmptyCart() {
-            document.getElementById('cartWithItems').style.display = 'none';
-            document.getElementById('emptyCart').style.display = 'block';
-            document.querySelector('.cart-summary').style.display = 'none';
+        // Update cart badge display
+        function updateCartDisplay() {
+            const cartCount = document.getElementById('cartCount');
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
         }
 
         // Proceed to checkout
         function proceedToCheckout() {
-            if (cartItems.length === 0) {
+            if (cart.length === 0) {
                 alert('ตะกร้าสินค้าว่างเปล่า กรุณาเลือกสินค้าก่อน');
                 return;
             }
-            alert('กำลังไปหน้าชำระเงิน...');
-            // Here you would redirect to checkout page
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const discount = total > 500 ? 100 : 0;
+            const shipping = total >= 1000 ? 0 : 50;
+            const finalTotal = total - discount + shipping;
+            
+            alert(`การชำระเงิน\nยอดรวม: ฿${finalTotal.toLocaleString()}\nกำลังไปหน้าชำระเงิน...`);
+            
+            // In a real application, you would redirect to checkout page
+            // window.location.href = 'checkout.html';
         }
 
-        // Continue shopping
-        function continueShopping() {
+        // Go to products page
+        function goToProducts() {
             alert('กลับไปหน้าสินค้า...');
-            // Here you would redirect to products page
+            // In a real application, you would navigate to products page
+            // window.location.href = 'products.html';
         }
 
-        // Handle quantity input changes
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.quantity-input').forEach((input, index) => {
-                input.addEventListener('change', function() {
-                    const itemId = index + 1;
-                    const item = cartItems.find(item => item.id === itemId);
-                    if (item) {
-                        const newQuantity = parseInt(this.value);
-                        if (newQuantity >= 1) {
-                            item.quantity = newQuantity;
-                            updateDisplay(itemId);
-                            updateSummary();
-                            updateCartCount();
-                        } else {
-                            this.value = item.quantity;
-                        }
-                    }
-                });
-            });
+        // Clear all cart items (for testing)
+        function clearCart() {
+            if (confirm('คุณต้องการลบสินค้าทั้งหมดออกจากตะกร้าหรือไม่?')) {
+                cart = [];
+                saveCartToStorage();
+                displayCartItems();
+                updateSummary();
+                updateCartDisplay();
+            }
+        }
 
-            // Initial update
+        // Add sample items for demo (you can remove this in production)
+        function addSampleItems() {
+            cart = [
+                {
+                    id: 1,
+                    name: 'Royal Canin Adult Medium 4kg',
+                    price: 1290,
+                    category: 'อาหารสุนัข',
+                    image: 'https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=400&h=300&fit=crop',
+                    quantity: 1
+                },
+                {
+                    id: 2,
+                    name: 'Kong Classic Dog Toy',
+                    price: 590,
+                    category: 'อุปกรณ์',
+                    image: 'https://images.unsplash.com/photo-1571873757135-38c5e79fc2ba?w=400&h=300&fit=crop',
+                    quantity: 2
+                }
+            ];
+            saveCartToStorage();
+            displayCartItems();
             updateSummary();
-            updateCartCount();
+            updateCartDisplay();
+        }
+
+        // Add keyboard shortcuts for testing (remove in production)
+        document.addEventListener('keydown', function(e) {
+            // Press 'S' to add sample items
+            if (e.key === 's' || e.key === 'S') {
+                addSampleItems();
+                console.log('Sample items added to cart');
+            }
+            // Press 'C' to clear cart
+            if (e.key === 'c' || e.key === 'C') {
+                clearCart();
+                console.log('Cart cleared');
+            }
         });
+
+        // Expose functions for cross-page communication
+        window.cartManager = {
+            getCart: () => cart,
+            addItem: (item) => {
+                const existingItem = cart.find(cartItem => cartItem.id === item.id);
+                if (existingItem) {
+                    existingItem.quantity += item.quantity || 1;
+                } else {
+                    cart.push({...item, quantity: item.quantity || 1});
+                }
+                saveCartToStorage();
+                displayCartItems();
+                updateSummary();
+                updateCartDisplay();
+            },
+            removeItem: (itemId) => removeItem(itemId),
+            clearCart: () => clearCart(),
+            getCartCount: () => cart.reduce((sum, item) => sum + item.quantity, 0)
+        };
     </script>
 </body>
 </html>
